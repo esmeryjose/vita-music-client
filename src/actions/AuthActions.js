@@ -1,22 +1,28 @@
 import Auth from "../adapters/Auth";
 
-export const LoginUser = code => {
+export const loginUser = (code, history) => {
     return dispatch => {
-        return Auth.login(code).then(res => {
-            // now we have to save the JWT token and dispatch an acion that will update the
-            // store with the response
+        Auth.login(code).then(res => {
+            localStorage.setItem("token", res.token);
+            const userId = res.currentUser.id;
+            dispatch({ type: "LOG_IN", payload: res.currentUser });
+            history.push(`/users/${userId}`);
         });
     };
 };
 
-export const currentUser = () => {
+export const getCurrentUser = () => {
     return dispatch => {
-        return Auth.currentUser().then(res => {
-            // now we have to dispatch an action that will update the current user in the store
+        Auth.currentUser().then(res => {
+            dispatch({ type: "LOG_IN", payload: res });
         });
     };
 };
 
-export const logoutUser = () => {
-    return { type: "LOGOUT_USER" };
+export const logOutUser = history => {
+    return dispatch => {
+        localStorage.clear();
+        dispatch({ type: "LOGOUT_USER" });
+        history.push(`/login`);
+    };
 };

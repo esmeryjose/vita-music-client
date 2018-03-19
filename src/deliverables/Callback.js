@@ -1,17 +1,14 @@
-import react from "react";
+import { loginUser } from "../actions/AuthActions";
+import { connect } from "react-redux";
 
-// I need to dispatch from here
-
-export const Callback = params => {
+const Callback = ({ history, location, loginUser }) => {
     if (!localStorage.getItem("token")) {
-        const code = params.location.search.split("?code=")[1];
-
-        // Auth.login(code).then(({ token, currentUser }) => {
-        //     localStorage.setItem("token", token);
-        //     this.setState({ loggedIn: true, currentUser }, () => {
-        //         router.history.push("/profile");
-        //     });
-        // });
+        const code = location.search.split("?code=")[1];
+        loginUser(code, history);
     }
     return null;
 };
+
+const mapStateToProps = () => ({});
+
+export default connect(mapStateToProps, { loginUser })(Callback);

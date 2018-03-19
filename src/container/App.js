@@ -1,24 +1,35 @@
 import React, { Component } from "react";
 import { Route } from "react-router-dom";
+import { getCurrentUser } from "../actions/AuthActions";
 import { connect } from "react-redux";
-import { Callback } from "../deliverables/Callback";
-import FlatButton from "material-ui/FlatButton";
-import { Link } from "react-router-dom";
+import Callback from "../deliverables/Callback";
+import { withRouter } from "react-router-dom";
+import Login from "../components/Login";
+import ShowPage from "../components/ShowPage";
 
 class App extends Component {
+    componentDidMount() {
+        if (localStorage.getItem("token") && !this.props.isLoggedIn) {
+            this.props.getCurrentUser();
+        } else {
+            this.props.history.push("/login");
+        }
+    }
+
     render() {
         return (
             <div>
-                <a href="http://localhost:3000/api/v1/auth">
-                    <FlatButton label="Login" secondary={true} />
-                </a>
                 <Route exact path="/callback" component={Callback} />
+                <Route exact path="/login" component={Login} />
+                <Route exact path="/users/:id" component={ShowPage} />
             </div>
         );
     }
 }
 
-// this two fucntions are incomplete
-const mapStateToProps = state => ({});
-const mapDispatchToProps = () => ({});
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+const mapStateToProps = state => ({
+    isLoggedIn: state.auth.isLoggedIn,
+    currentUser: state.auth.currentUser
+});
+
+export default withRouter(connect(mapStateToProps, { getCurrentUser })(App));
