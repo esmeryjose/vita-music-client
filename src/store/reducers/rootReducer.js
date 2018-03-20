@@ -5,6 +5,6 @@ import UserReducer from "./UserReducer";
 
 export default combineReducers({
     auth: AuthReducer,
-    Loader: LoadingReducer,
-    User: UserReducer
+    loader: LoadingReducer,
+    userShowView: UserReducer
 });
