@@ -3,9 +3,6 @@ import Auth from "../adapters/Auth";
 export const loginUser = (code, history) => {
     return dispatch => {
         Auth.login(code).then(res => {
-            // debugger;
-            // console.log(res, "inside auth login reducer");
-
             localStorage.setItem("token", res.token);
             const userId = res.currentUser.id;
             dispatch({ type: "END_LOADING" });

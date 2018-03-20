@@ -20,14 +20,10 @@ class App extends Component {
         }
     }
 
-    renderLoader() {
-        return <Loader />;
-    }
-
     render() {
         return (
             <div>
-                {this.props.loading ? this.renderLoader() : null}
+                {this.props.loading ? <Loader /> : null}
                 <Route exact path="/callback" component={Callback} />
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/users/:id" component={ShowPage} />
