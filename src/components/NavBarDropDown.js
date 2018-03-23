@@ -29,6 +29,7 @@ const NavBarDropDown = props => {
             anchorOrigin={{ horizontal: "right", vertical: "top" }}
         >
             <MenuItem primaryText="Home" onClick={home} />
+            <MenuItem primaryText="Create Event" onClick={logOut} />
             <MenuItem primaryText="Sign out" onClick={logOut} />
         </IconMenu>
     );
