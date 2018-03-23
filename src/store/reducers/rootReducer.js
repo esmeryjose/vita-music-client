@@ -7,6 +7,7 @@ import EventsReducer from "./EventsReducer";
 export default combineReducers({
     auth: AuthReducer,
     loader: LoadingReducer,
-    userShowView: UserReducer,
-    userEvents: EventsReducer
+    users: UserReducer,
+    events: EventsReducer
+    // userEvents: EventsReducer
 });

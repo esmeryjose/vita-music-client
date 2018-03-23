@@ -1,9 +1,9 @@
 import Event from "../adapters/Event";
 
-export const getUserEvents = id => {
+export const getEvent = (userId, eventId) => {
     return dispatch => {
-        Event.index(id).then(res => {
-            dispatch({ type: "GET_USER_EVENTS", payload: res });
+        Event.show(userId, eventId).then(res => {
+            dispatch({ type: "GET_EVENT", payload: res });
         });
     };
 };

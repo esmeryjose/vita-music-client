@@ -1,7 +1,11 @@
-export default (state = {}, action) => {
+const initialState = {
+    event: {}
+};
+
+export default (state = initialState, action) => {
     switch (action.type) {
-        case "GET_USER_EVENTS":
-            return { events: action.payload };
+        case "GET_EVENT":
+            return { ...state, event: action.payload };
         default:
             return state;
     }
