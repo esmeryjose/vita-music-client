@@ -6,8 +6,6 @@ let code;
 
 const Callback = ({ history, location, loginUser, startLoader }) => {
     if (!localStorage.getItem("token") && !code) {
-        console.log("inside callback");
-        // debugger;
         code = location.search.split("?code=")[1];
         startLoader();
         loginUser(code, history);

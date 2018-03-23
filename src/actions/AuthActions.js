@@ -23,7 +23,7 @@ export const getCurrentUser = () => {
 export const logOutUser = history => {
     return dispatch => {
         localStorage.clear();
-        dispatch({ type: "LOGOUT_USER" });
+        dispatch({ type: "LOG_OUT" });
         history.push(`/login`);
     };
 };

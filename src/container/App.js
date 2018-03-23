@@ -6,8 +6,9 @@ import { connect } from "react-redux";
 import Callback from "../deliverables/Callback";
 import { withRouter } from "react-router-dom";
 import Login from "../components/Login";
-import ShowPage from "../components/ShowPage";
+import UsersRouteContainer from "./UsersRouteContainer";
 import Loader from "../components/Loader";
+import NavBar from "../container/NavBar";
 
 class App extends Component {
     componentDidMount() {
@@ -23,10 +24,11 @@ class App extends Component {
     render() {
         return (
             <div>
+                {this.props.isLoggedIn ? <NavBar /> : null}
                 {this.props.loading ? <Loader /> : null}
                 <Route exact path="/callback" component={Callback} />
                 <Route exact path="/login" component={Login} />
-                <Route exact path="/users/:id" component={ShowPage} />
+                <Route path="/users" component={UsersRouteContainer} />
             </div>
         );
     }
