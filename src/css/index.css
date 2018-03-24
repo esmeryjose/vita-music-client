@@ -3,3 +3,82 @@ body {
     font-size: 24px;
  }
  
+ .host-container{
+     display: flex;
+     flex-direction: row;
+     width: 100%;
+}
+
+.host-first-child-left{
+    width: 30%;
+}
+.host-first-child-right{
+    width: 70%;
+}
+
+.host-second-child{
+    float: left;
+    margin-left: 20%; 
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+.avatar{
+    /* width: 15%; */
+}
+
+.right-child{
+    text-align: right;
+    /* margin-left: 20%; */
+}
+
+.banner{
+    border-top: 2px solid gray;
+    border-bottom: 2px solid gray;
+}
+
+.container-date-time-location{
+    display: flex;
+    flex-direction: row;
+}
+
+.date-time-location{
+    font-size: 14px;
+
+}
+
+.holder-rsvp-button{
+    width: 70%;
+}
+
+.center{
+    margin: 0 auto;
+}
+
+.rsvp-button-width{
+    width: 30%;
+}
+
+.width-50{
+    width: 42%;
+}
+.width-20{
+    width: 20%;
+}
+
+.hosted-by{
+    font-size: 14px;
+}
+
+/* .event-title{
+    margin-left: 15%;
+    margin-top: 15%;
+} */
+
+.next-to-event-avatar{
+    float: right;
+    margin-right: 20%;
+    margin-top: 10%;
+    width: 70%;
+}

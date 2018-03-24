@@ -13,26 +13,24 @@ class UserShow extends Component {
     }
 
     renderUserProfile = () => {
-        const { profile_img_url } = this.props.user;
+        const { user, events } = this.props;
 
-        return (
-            <div>
-                <img src={profile_img_url} alt="spotifyImgUrl" />
-                <UserEventsContainer />
-            </div>
-        );
+        if (!IsEmpty(user) && !IsEmpty(events)) {
+            const { profile_img_url } = this.props.user;
+
+            return (
+                <div>
+                    <img src={profile_img_url} alt="spotifyImgUrl" />
+                    <UserEventsContainer />
+                </div>
+            );
+        }
+
+        return null;
     };
 
     render() {
-        const { user, events } = this.props;
-
-        return (
-            <div>
-                {!IsEmpty(user) && !IsEmpty(events)
-                    ? this.renderUserProfile()
-                    : null}
-            </div>
-        );
+        return <div>{this.renderUserProfile()}</div>;
     }
 }
 

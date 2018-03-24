@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getEvent } from "../actions/EventsActions";
 import { IsEmpty } from "../deliverables/IsEmpty";
+import EventBanner from "../components/EventBanner";
 
 class EventShow extends Component {
     componentDidMount() {
@@ -9,14 +10,28 @@ class EventShow extends Component {
         this.props.getEvent(ids[0], ids[1]);
     }
 
-    renderEventDetail = () => {
-        return <div>This is the content of an event</div>;
+    handleAvatarChipClick = () => {
+        console.log("chip has been clicked");
     };
-    render() {
+
+    renderEventDetail = () => {
         const { event } = this.props;
+        const { admin } = event;
         console.log(event);
 
-        return <div>{!IsEmpty(event) ? this.renderEventDetail() : null}</div>;
+        if (!IsEmpty(event)) {
+            return (
+                <div>
+                    <EventBanner />
+                </div>
+            );
+        }
+
+        return null;
+    };
+
+    render() {
+        return <div>{this.renderEventDetail()}</div>;
     }
 }
 
