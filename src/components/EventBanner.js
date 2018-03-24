@@ -18,23 +18,19 @@ const EventBanner = ({ event }) => {
         <div className="banner">
             <div className="host-container">
                 <div className="host-first-child-left">
-                    <div>
-                        <div className="next-to-event-avatar">
-                            <h3 className="event-title">
-                                Spring Day Festivities
-                            </h3>
-                            <div className="hosted-by">
-                                Hosted by: {admin.display_name}
-                            </div>
-                        </div>
-                        <div className="avatar-event-show">
-                            <Link to={`/users/${admin.id}`}>
-                                <Avatar
-                                    style={{ margin: 5 }}
-                                    size={60}
-                                    src={admin.profile_img_url}
-                                />
-                            </Link>
+                    <div className="avatar-event-show">
+                        <Link to={`/users/${admin.id}`}>
+                            <Avatar
+                                style={{ margin: 5 }}
+                                size={60}
+                                src={admin.profile_img_url}
+                            />
+                        </Link>
+                    </div>
+                    <div className="event-host-by-container">
+                        <h3 className="event-title">Spring Day Festivities</h3>
+                        <div className="hosted-by">
+                            Hosted by: {admin.display_name}
                         </div>
                     </div>
                 </div>
