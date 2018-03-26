@@ -88,3 +88,35 @@ body {
     font-size: 14px;
 }
 
+.add-button{
+    /* position: absolute;
+    left: 29%;
+    margin-top: 1.5%;
+    z-index: 2; */
+    float: right;
+}
+
+.search-field-container{
+    width: 25%;
+}
+
+
+.tracks-container{
+    margin: 0 auto;
+    height: 400px;
+    width: 40%;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+    margin-top: 3% !important;
+}
+
+.whole-track{
+    width: 80%;
+    margin-left: 15%;
+}
+
+.track{
+    width: 85%;
+}
+/* fellow feeling */

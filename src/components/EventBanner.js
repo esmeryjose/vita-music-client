@@ -9,11 +9,19 @@ import Date from "material-ui/svg-icons/action/date-range";
 import Location from "material-ui/svg-icons/communication/location-on";
 import Time from "material-ui/svg-icons/av/av-timer";
 import { blue50 } from "material-ui/styles/colors";
+import { IsEmpty } from "../deliverables/IsEmpty";
 
 const EventBanner = ({ event }) => {
+    if (!IsEmpty(event)) {
+        return <Banner event={event} />;
+    }
+
+    return null;
+};
+
+const Banner = ({ event }) => {
     const { admin } = event;
     const numAttending = event.attendees.length;
-    // <EventDetail />
     return (
         <div className="banner">
             <div className="host-container">

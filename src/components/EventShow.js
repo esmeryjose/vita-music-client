@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getEvent } from "../actions/EventsActions";
+import { searchTracks } from "../actions/SearchActions";
 import { IsEmpty } from "../deliverables/IsEmpty";
 import EventBanner from "../components/EventBanner";
 import TextField from "material-ui/TextField";
+import SpotifyPlayer from "react-spotify-player";
+import TracksContainer from "../container/TracksContainer";
 
 class EventShow extends Component {
     constructor() {
@@ -15,10 +18,10 @@ class EventShow extends Component {
 
     handleChange = e => {
         const { value } = e.target;
-        this.setState({ searchSong: value });
-        // Send the state to the action
-        // send the request to my api
-        // my api gets data from spotify and that data gets send to the reducer
+        const { searchTracks } = this.props;
+        this.setState({ searchSong: value }, () =>
+            searchTracks(this.state.searchSong)
+        );
     };
 
     componentDidMount() {
@@ -26,39 +29,33 @@ class EventShow extends Component {
         this.props.getEvent(ids[0], ids[1]);
     }
 
-    handleAvatarChipClick = () => {
-        console.log("chip has been clicked");
-    };
+    render() {
+        const { selectionTracks } = this.props;
 
-    renderEventDetail = () => {
-        const { event } = this.props;
-        const { admin } = event;
-
-        if (!IsEmpty(event)) {
-            return (
+        return (
+            <div>
                 <div>
                     <EventBanner />
-                    <TextField
-                        onChange={this.handleChange}
-                        hintText=""
-                        floatingLabelText="Search for song..."
-                    />
                 </div>
-            );
-        }
-
-        return null;
-    };
-
-    render() {
-        console.log(this.state);
-
-        return <div>{this.renderEventDetail()}</div>;
+                <div className="searchArea">
+                    <div className="search-field-container center">
+                        <TextField
+                            onChange={this.handleChange}
+                            hintText=""
+                            floatingLabelText="Search for song..."
+                        />
+                    </div>
+                    <div>
+                        <TracksContainer selectionTracks={selectionTracks} />
+                    </div>
+                </div>
+            </div>
+        );
     }
 }
 
-const mapStateToProps = ({ events }) => {
-    const { event } = events;
-    return { event };
+const mapStateToProps = ({ search }) => {
+    const { searchTracks } = search;
+    return { selectionTracks: searchTracks };
 };
-export default connect(mapStateToProps, { getEvent })(EventShow);
+export default connect(mapStateToProps, { getEvent, searchTracks })(EventShow);
