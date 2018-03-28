@@ -7,3 +7,11 @@ export const getEvent = (userId, eventId) => {
         });
     };
 };
+
+export const createEvent = (userId, form) => {
+    return dispatch => {
+        Event.create(userId, form).then(res => {
+            dispatch({ type: "ADD_USER_EVENTS", payload: res });
+        });
+    };
+};

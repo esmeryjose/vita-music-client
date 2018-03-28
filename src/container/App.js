@@ -9,6 +9,9 @@ import Login from "../components/Login";
 import UsersRouteContainer from "./UsersRouteContainer";
 import Loader from "../components/Loader";
 import NavBar from "../container/NavBar";
+import { clearSearch } from "../actions/SearchActions";
+import { clearPlaylist } from "../actions/PlaylistActions";
+import { clearUser } from "../actions/UserActions";
 
 class App extends Component {
     componentDidMount() {
@@ -18,6 +21,16 @@ class App extends Component {
             } else {
                 this.props.history.push("/login");
             }
+        }
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (this.props.location.pathname !== nextProps.location.pathname) {
+            console.log("here");
+
+            this.props.clearSearch();
+            this.props.clearPlaylist();
+            this.props.clearUser();
         }
     }
 
@@ -41,5 +54,11 @@ const mapStateToProps = state => ({
 });
 
 export default withRouter(
-    connect(mapStateToProps, { getCurrentUser, startLoader })(App)
+    connect(mapStateToProps, {
+        getCurrentUser,
+        startLoader,
+        clearSearch,
+        clearPlaylist,
+        clearUser
+    })(App)
 );

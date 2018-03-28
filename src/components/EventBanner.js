@@ -9,7 +9,7 @@ import Date from "material-ui/svg-icons/action/date-range";
 import Location from "material-ui/svg-icons/communication/location-on";
 import Time from "material-ui/svg-icons/av/av-timer";
 import { blue50 } from "material-ui/styles/colors";
-import { IsEmpty } from "../deliverables/IsEmpty";
+import { IsEmpty } from "../deliverables/Helpers";
 
 const EventBanner = ({ event }) => {
     if (!IsEmpty(event)) {
@@ -22,6 +22,7 @@ const EventBanner = ({ event }) => {
 const Banner = ({ event }) => {
     const { admin } = event;
     const numAttending = event.attendees.length;
+    const date = event.event_date.split("00:00:00")[0];
     return (
         <div className="banner">
             <div className="host-container">
@@ -36,7 +37,7 @@ const Banner = ({ event }) => {
                         </Link>
                     </div>
                     <div className="event-host-by-container">
-                        <h3 className="event-title">Spring Day Festivities</h3>
+                        <h3 className="event-title">{event.title}</h3>
                         <div className="hosted-by">
                             Hosted by: {admin.display_name}
                         </div>
@@ -47,15 +48,17 @@ const Banner = ({ event }) => {
                         <div className="container-date-time-location">
                             <p className="date-time-location">
                                 <Date style={{ height: 30, width: 30 }} />
-                                Saturday, March 24, 2018
+                                {date}
                             </p>
                             <p className="date-time-location">
                                 <Location style={{ height: 30, width: 30 }} />
-                                11 broadway apt#2, new york, new york 10468
+                                {event.location}
                             </p>
                             <p className="date-time-location">
                                 <Time style={{ height: 30, width: 30 }} />
-                                3:00 PM to 7:00 PM
+                                {`${event.starting_time} to ${
+                                    event.ending_time
+                                }`}
                             </p>
                         </div>
 

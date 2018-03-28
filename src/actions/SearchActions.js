@@ -7,3 +7,9 @@ export const searchTracks = track => {
         });
     };
 };
+
+export const clearSearch = () => {
+    return dispatch => {
+        dispatch({ type: "CLEAR_SEARCH" });
+    };
+};

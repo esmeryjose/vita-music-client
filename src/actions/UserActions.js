@@ -16,3 +16,9 @@ export const getUserEvents = id => {
         });
     };
 };
+
+export const clearUser = () => {
+    return dispatch => {
+        dispatch({ type: "CLEAR_USER" });
+    };
+};

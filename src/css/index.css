@@ -70,6 +70,8 @@ body {
 }
 
 .event-host-by-container{
+    margin-left: 2%;
+    margin-top: 5% ;
     display: flex;
     flex-direction: column;
 }
@@ -111,6 +113,15 @@ body {
     margin-top: 3% !important;
 }
 
+.pending-tracks-container{
+    margin: 0 auto;
+    /* height: 400px; */
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+}
+
 .whole-track{
     width: 80%;
     margin-left: 15%;
@@ -119,4 +130,10 @@ body {
 .track{
     width: 85%;
 }
-/* fellow feeling */
+
+
+
+.pending-tracks-margin{
+    margin-top: 10% !important;
+
+}
