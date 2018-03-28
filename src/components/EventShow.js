@@ -53,45 +53,66 @@ class EventShow extends Component {
         searchTracks(this.state.searchSong);
     };
 
+    renderSearchArea = () => {
+        const { selectionTracks, myPlaylist, event, currentUser } = this.props;
+
+        // debugger;
+
+        if (!IsEmpty(event) && !IsEmpty(currentUser)) {
+            if (
+                !!event.pending.find(
+                    attendee => attendee.id === currentUser.id
+                ) ||
+                event.user_id === currentUser.id
+            ) {
+                return (
+                    <div className="searchArea">
+                        <div className="search-field-container center">
+                            <TextField
+                                onChange={this.handleChange}
+                                hintText=""
+                                floatingLabelText="Search for song..."
+                                floatingLabelFocusStyle={
+                                    styles.floatingLabelFocusStyle
+                                }
+                                underlineFocusStyle={styles.underlineFocusStyle}
+                            />
+                        </div>
+                        <div>
+                            <TracksContainer
+                                selectionTracks={selectionTracks}
+                            />
+                        </div>
+                        <div>
+                            <TracksContainer
+                                pendingTracks={myPlaylist.pending_tracks}
+                            />
+                        </div>
+                    </div>
+                );
+            }
+        }
+        return null;
+    };
+
     render() {
-        const { selectionTracks } = this.props;
-        const { myPlaylist } = this.props;
         return (
             <div>
                 <div>
                     <EventBanner />
                 </div>
-                <div className="searchArea">
-                    <div className="search-field-container center">
-                        <TextField
-                            onChange={this.handleChange}
-                            hintText=""
-                            floatingLabelText="Search for song..."
-                            floatingLabelFocusStyle={
-                                styles.floatingLabelFocusStyle
-                            }
-                            underlineFocusStyle={styles.underlineFocusStyle}
-                        />
-                    </div>
-                    <div>
-                        <TracksContainer selectionTracks={selectionTracks} />
-                    </div>
-                    <div>
-                        <TracksContainer
-                            pendingTracks={myPlaylist.pending_tracks}
-                        />
-                    </div>
-                </div>
+                {this.renderSearchArea()}
             </div>
         );
     }
 }
 
-const mapStateToProps = ({ search, events, playlist }) => {
+const mapStateToProps = ({ auth, search, events, playlist }) => {
     const { searchTracks } = search;
     const { myPlaylist } = playlist;
     const { event } = events;
-    return { selectionTracks: searchTracks, myPlaylist, event };
+    const { currentUser } = auth;
+    return { selectionTracks: searchTracks, myPlaylist, event, currentUser };
 };
 
 export default connect(mapStateToProps, {

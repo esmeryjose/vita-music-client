@@ -8,6 +8,7 @@ import DatePicker from "material-ui/DatePicker";
 import TimePicker from "material-ui/TimePicker";
 import { TimeParser } from "../deliverables/Helpers";
 import { createEvent } from "../actions/EventsActions";
+import { IsEmpty } from "../deliverables/Helpers";
 
 const styles = {
     floatingLabelFocusStyle: {
@@ -87,7 +88,24 @@ class CreateEventModal extends Component {
         }));
     };
 
-    render() {
+    renderCreateButton = () => {
+        const { currentUserId, user } = this.props;
+        if (currentUserId && !IsEmpty(user)) {
+            if (currentUserId === user.id) {
+                return (
+                    <div className="create-event-button center">
+                        <FlatButton
+                            label="Create Event"
+                            onClick={this.handleOpen}
+                        />
+                    </div>
+                );
+            }
+        }
+        return null;
+    };
+
+    renderButtonActions = () => {
         const actions = [
             <FlatButton
                 label="Cancel"
@@ -101,18 +119,15 @@ class CreateEventModal extends Component {
                 onClick={this.handleClose}
             />
         ];
-
+        return actions;
+    };
+    render() {
         return (
             <div>
-                <div className="create-event-button center">
-                    <FlatButton
-                        label="Create Event"
-                        onClick={this.handleOpen}
-                    />
-                </div>
+                {this.renderCreateButton()}
                 <Dialog
                     title="Dialog With Actions"
-                    actions={actions}
+                    actions={this.renderButtonActions()}
                     modal={false}
                     open={this.state.open}
                     onRequestClose={this.handleClose}
@@ -167,9 +182,10 @@ class CreateEventModal extends Component {
     }
 }
 
-const mapStateToProps = ({ auth }) => {
+const mapStateToProps = ({ auth, users }) => {
     const id = auth.currentUser.id;
-    return { currentUserId: id };
+    const { user } = users;
+    return { currentUserId: id, user };
 };
 
 export default connect(mapStateToProps, { createEvent })(CreateEventModal);

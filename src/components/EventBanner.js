@@ -10,18 +10,56 @@ import Location from "material-ui/svg-icons/communication/location-on";
 import Time from "material-ui/svg-icons/av/av-timer";
 import { blue50 } from "material-ui/styles/colors";
 import { IsEmpty } from "../deliverables/Helpers";
+import { createRsvp } from "../actions/RsvpActions";
 
-const EventBanner = ({ event }) => {
+const EventBanner = ({ event, currentUser, createRsvp }) => {
     if (!IsEmpty(event)) {
-        return <Banner event={event} />;
+        return (
+            <Banner
+                event={event}
+                currentUser={currentUser}
+                createRsvp={createRsvp}
+            />
+        );
     }
 
     return null;
 };
 
-const Banner = ({ event }) => {
+const renderRsvpButton = (event, currentUser, createRsvp) => {
+    const handleClick = () => createRsvp(currentUser.id, event.id);
+
+    if (!IsEmpty(currentUser)) {
+        if (
+            !event.pending.find(attendee => attendee.id === currentUser.id) &&
+            event.user_id !== currentUser.id
+        ) {
+            const numAttending = event.attendees.length;
+            return (
+                <div className="container-rsvp-button">
+                    <div className="center">
+                        <div className="center width-50">
+                            Reserve Your Spot! {numAttending} guest are going!
+                        </div>
+                        <br />
+                        <div className="center width-20">
+                            <RaisedButton
+                                onClick={handleClick}
+                                label={<Check color={blue50} />}
+                                style={{ margin: 5 }}
+                                backgroundColor={"#6bc023"}
+                            />
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+    }
+    return null;
+};
+
+const Banner = ({ event, currentUser, createRsvp }) => {
     const { admin } = event;
-    const numAttending = event.attendees.length;
     const date = event.event_date.split("00:00:00")[0];
     return (
         <div className="banner">
@@ -62,22 +100,7 @@ const Banner = ({ event }) => {
                             </p>
                         </div>
 
-                        <div className="container-rsvp-button">
-                            <div className="center">
-                                <div className="center width-50">
-                                    Reserve Your Spot! {numAttending} guest are
-                                    going!
-                                </div>
-                                <br />
-                                <div className="center width-20">
-                                    <RaisedButton
-                                        label={<Check color={blue50} />}
-                                        style={{ margin: 5 }}
-                                        backgroundColor={"#6bc023"}
-                                    />
-                                </div>
-                            </div>
-                        </div>
+                        {renderRsvpButton(event, currentUser, createRsvp)}
                     </div>
                 </div>
             </div>
@@ -85,9 +108,10 @@ const Banner = ({ event }) => {
     );
 };
 
-const mapStateToProps = ({ events }) => {
+const mapStateToProps = ({ events, auth }) => {
     const { event } = events;
-    return { event };
+    const { currentUser } = auth;
+    return { event, currentUser };
 };
 
-export default connect(mapStateToProps, {})(EventBanner);
+export default connect(mapStateToProps, { createRsvp })(EventBanner);
