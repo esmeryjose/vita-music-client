@@ -5,7 +5,15 @@ import { IsEmpty } from "../deliverables/Helpers";
 
 const UserEventsContainer = ({ events }) => {
     const renderEvent = (event, i) => <UserEvent key={i} data={event} />;
-    return <div>{events.map(renderEvent)}</div>;
+
+    if (!!events.length) {
+        return (
+            <div className="user-event-container">
+                {events.map(renderEvent)}
+            </div>
+        );
+    }
+    return null;
 };
 
 const mapStateToProps = ({ users }) => {

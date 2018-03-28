@@ -72,8 +72,8 @@ const Banner = ({ event }) => {
                                 <div className="center width-20">
                                     <RaisedButton
                                         label={<Check color={blue50} />}
-                                        primary={true}
                                         style={{ margin: 5 }}
+                                        backgroundColor={"#6bc023"}
                                     />
                                 </div>
                             </div>

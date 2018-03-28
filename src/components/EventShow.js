@@ -10,6 +10,15 @@ import TracksContainer from "../container/TracksContainer";
 import { IsEmpty } from "../deliverables/Helpers";
 import _ from "underscore";
 
+const styles = {
+    floatingLabelFocusStyle: {
+        color: "#6bc023"
+    },
+    underlineFocusStyle: {
+        borderColor: "#6bc023"
+    }
+};
+
 class EventShow extends Component {
     constructor() {
         super();
@@ -58,6 +67,10 @@ class EventShow extends Component {
                             onChange={this.handleChange}
                             hintText=""
                             floatingLabelText="Search for song..."
+                            floatingLabelFocusStyle={
+                                styles.floatingLabelFocusStyle
+                            }
+                            underlineFocusStyle={styles.underlineFocusStyle}
                         />
                     </div>
                     <div>
@@ -80,6 +93,7 @@ const mapStateToProps = ({ search, events, playlist }) => {
     const { event } = events;
     return { selectionTracks: searchTracks, myPlaylist, event };
 };
+
 export default connect(mapStateToProps, {
     getEvent,
     searchTracks,

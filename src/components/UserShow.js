@@ -5,6 +5,7 @@ import { getUserEvents } from "../actions/UserActions";
 import UserEventsContainer from "../container/UserEventsContainer";
 import { IsEmpty } from "../deliverables/Helpers";
 import CreateEventModal from "./CreateEventModal";
+import ProfileImage from "./ProfileImage";
 
 class UserShow extends Component {
     componentDidMount() {
@@ -29,9 +30,7 @@ class UserShow extends Component {
 
         return (
             <div>
-                {!IsEmpty(user) ? (
-                    <img src={user.profile_img_url} alt="spotifyImgUrl" />
-                ) : null}
+                {!IsEmpty(user) ? <ProfileImage user={user} /> : null}
                 <CreateEventModal />
                 <UserEventsContainer />
             </div>

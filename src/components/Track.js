@@ -37,7 +37,7 @@ const AddButton = ({ handleClick }) => (
         onClick={handleClick}
         className="add-button"
         mini={true}
-        secondary={true}
+        backgroundColor={"#6bc023"}
         style={style}
     >
         <ContentAdd />

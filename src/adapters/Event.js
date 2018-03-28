@@ -27,4 +27,11 @@ export default class Event {
             headers: Headers()
         }).then(res => res.json());
     }
+
+    static destroy(userId, eventId) {
+        return fetch(`${url}/${userId}/events/${eventId}`, {
+            method: "DELETE",
+            headers: Headers()
+        }).then(res => res.json());
+    }
 }

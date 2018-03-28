@@ -3,6 +3,57 @@ body {
     font-size: 24px;
  }
  
+.login-page{
+    display: inline-block;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 200px;
+    height: 100px;
+    margin: auto;
+    color: white
+}
+
+.login-title{
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    margin-bottom: 5%;
+    color: white;
+    font-weight: 900;
+    width:50%;
+    margin: 0 auto;
+    font-size: 100px;
+    text-shadow: 0 0 30px #6bc023;
+}
+
+.login-a{
+    color:white;
+    text-decoration: none;
+
+    /* background-color: none; */
+}
+
+.home-avatar{
+    margin-left: 3%;
+}
+
+.icon-logo{
+    margin-bottom: 5%;
+}
+
+.login-background{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -100;  
+    background-color: black;
+    background:  url(https://thumbs.gfycat.com/ObeseLavishImpala-size_restricted.gif) no-repeat center center fixed; 
+    background-size: 100% 100%; 
+}
+
  .host-container{
      display: flex;
      flex-direction: row;
@@ -136,4 +187,45 @@ body {
 .pending-tracks-margin{
     margin-top: 10% !important;
 
+}
+
+.user-event-container{
+    margin-top: 5% !important;
+    margin: 0 auto;
+    height: 400px;
+    width: 40%;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+}
+
+.user-event-div{
+    width: 100%;
+    margin-left: 10%;
+    margin: 0 auto;
+
+}
+
+.user-event-card{
+    width: 90%;
+}
+
+.delete-event{
+    margin-right: 5% !important;
+    float: right;
+}
+
+.profile-img-show-page{
+    margin-top: 5%;
+    width: 30%;
+}
+
+.profile-img{
+    border-radius: 50%;
+    box-shadow: 2px 15px 15px grey;
+}
+
+.create-event-button{
+    margin-top: 2% !important;
+    width: 15%;
 }

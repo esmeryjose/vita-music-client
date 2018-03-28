@@ -15,3 +15,11 @@ export const createEvent = (userId, form) => {
         });
     };
 };
+
+export const deleteEvent = (userId, eventId) => {
+    return dispatch => {
+        Event.destroy(userId, eventId).then(res => {
+            dispatch({ type: "DELETE_USER_EVENT", payload: res });
+        });
+    };
+};

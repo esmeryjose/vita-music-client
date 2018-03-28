@@ -13,6 +13,12 @@ export default (state = initialState, action) => {
             return { ...state, events: [...state.events, action.payload] };
         case "CLEAR_USER":
             return initialState;
+        case "DELETE_USER_EVENT":
+            const { id } = action.payload;
+            const filteredEvents = state.events.filter(
+                event => event.id !== id
+            );
+            return { ...state, events: filteredEvents };
         default:
             return state;
     }

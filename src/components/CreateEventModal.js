@@ -9,6 +9,15 @@ import TimePicker from "material-ui/TimePicker";
 import { TimeParser } from "../deliverables/Helpers";
 import { createEvent } from "../actions/EventsActions";
 
+const styles = {
+    floatingLabelFocusStyle: {
+        color: "#6bc023"
+    },
+    underlineFocusStyle: {
+        borderColor: "#6bc023"
+    }
+};
+
 class CreateEventModal extends Component {
     state = {
         open: false,
@@ -82,12 +91,12 @@ class CreateEventModal extends Component {
         const actions = [
             <FlatButton
                 label="Cancel"
-                primary={true}
+                backgroundColor={"#6bc023"}
                 onClick={this.handleClose}
             />,
             <FlatButton
                 label="Submit"
-                primary={true}
+                backgroundColor={"#6bc023"}
                 keyboardFocused={true}
                 onClick={this.handleClose}
             />
@@ -95,7 +104,12 @@ class CreateEventModal extends Component {
 
         return (
             <div>
-                <RaisedButton label="Create Event" onClick={this.handleOpen} />
+                <div className="create-event-button center">
+                    <FlatButton
+                        label="Create Event"
+                        onClick={this.handleOpen}
+                    />
+                </div>
                 <Dialog
                     title="Dialog With Actions"
                     actions={actions}
@@ -108,6 +122,8 @@ class CreateEventModal extends Component {
                         hintText=""
                         floatingLabelText="Title"
                         onChange={this.handleChange.bind(this)}
+                        floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
+                        underlineFocusStyle={styles.underlineFocusStyle}
                     />
                     <br />
                     <TextField
@@ -115,6 +131,8 @@ class CreateEventModal extends Component {
                         hintText=""
                         floatingLabelText="Location"
                         onChange={this.handleChange}
+                        floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
+                        underlineFocusStyle={styles.underlineFocusStyle}
                     />
                     <br />
                     <TextField
@@ -124,6 +142,8 @@ class CreateEventModal extends Component {
                         rows={2}
                         rowsMax={4}
                         onChange={this.handleChange}
+                        floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
+                        underlineFocusStyle={styles.underlineFocusStyle}
                     />
                     <DatePicker
                         hintText="Date"
@@ -134,6 +154,7 @@ class CreateEventModal extends Component {
                         onChange={this.handleStartingTime}
                         hintText="Starting time..."
                         autoOk={true}
+                        style={{ selectColor: "#6bc023" }}
                     />
                     <TimePicker
                         onChange={this.handleEndingTime}
