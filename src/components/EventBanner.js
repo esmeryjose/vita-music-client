@@ -11,6 +11,7 @@ import Time from "material-ui/svg-icons/av/av-timer";
 import { blue50 } from "material-ui/styles/colors";
 import { IsEmpty } from "../deliverables/Helpers";
 import { createRsvp } from "../actions/RsvpActions";
+import rockOn from "../assets/rockOn.jpg";
 
 const EventBanner = ({ event, currentUser, createRsvp }) => {
     if (!IsEmpty(event)) {
@@ -61,6 +62,11 @@ const renderRsvpButton = (event, currentUser, createRsvp) => {
 const Banner = ({ event, currentUser, createRsvp }) => {
     const { admin } = event;
     const date = event.event_date.split("00:00:00")[0];
+    let imgUrl = admin.profile_img_url;
+    if (!imgUrl) {
+        imgUrl = rockOn;
+    }
+
     return (
         <div className="banner">
             <div className="host-container">
@@ -70,7 +76,7 @@ const Banner = ({ event, currentUser, createRsvp }) => {
                             <Avatar
                                 style={{ margin: 5 }}
                                 size={60}
-                                src={admin.profile_img_url}
+                                src={imgUrl}
                             />
                         </Link>
                     </div>

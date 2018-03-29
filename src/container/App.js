@@ -12,6 +12,7 @@ import NavBar from "../container/NavBar";
 import { clearSearch } from "../actions/SearchActions";
 import { clearPlaylist } from "../actions/PlaylistActions";
 import { clearUser } from "../actions/UserActions";
+import Search from "../components/Search";
 
 class App extends Component {
     componentDidMount() {
@@ -26,8 +27,6 @@ class App extends Component {
 
     componentWillReceiveProps(nextProps) {
         if (this.props.location.pathname !== nextProps.location.pathname) {
-            console.log("here");
-
             this.props.clearSearch();
             this.props.clearPlaylist();
             this.props.clearUser();
@@ -42,6 +41,7 @@ class App extends Component {
                 <Route exact path="/callback" component={Callback} />
                 <Route exact path="/login" component={Login} />
                 <Route path="/users" component={UsersRouteContainer} />
+                <Route path="/search" component={Search} />
             </div>
         );
     }

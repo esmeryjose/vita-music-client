@@ -227,5 +227,47 @@ body {
 
 .create-event-button{
     margin-top: 2% !important;
-    width: 15%;
+    width: 25%;
+}
+
+.search-input-div{
+    margin-top: 5%;
+    width: 25%;
+}
+
+.test{
+    height: 50% !important;
+
+}
+
+.my-search-container{
+    display: flex;
+    flex-direction: row;
+    width: 75%;
+    margin: 0 auto;
+    margin-top: 5%;
+    
+}
+
+.search-result-div{
+    display: flex;
+    flex-direction: column;
+}
+
+.users-search-div{
+    margin-bottom: 10%;
+}
+
+.search-title-div{
+    width: 30%;
+    margin: 0 auto;
+    margin-bottom: 5%;
+}
+
+.search-right{
+    margin-left: 2%;
+}
+
+.search-left{
+    margin-right: 2%;
 }

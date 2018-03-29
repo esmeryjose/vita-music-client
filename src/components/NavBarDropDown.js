@@ -20,6 +20,10 @@ const NavBarDropDown = ({ logOutUser, history, currentuser }) => {
         history.push(`/users/${id}`);
     };
 
+    const search = () => {
+        history.push(`/search`);
+    };
+
     let imgUrl = currentuser.profile_img_url;
     if (!imgUrl) {
         imgUrl = rockOn;
@@ -40,6 +44,7 @@ const NavBarDropDown = ({ logOutUser, history, currentuser }) => {
                 <Avatar src={imgUrl} />
                 <span className="home-avatar">Home</span>
             </MenuItem>
+            <MenuItem primaryText="Search" onClick={search} />
             <MenuItem primaryText="Create Event" onClick={logOut} />
             <MenuItem primaryText="Sign out" onClick={logOut} />
         </IconMenu>

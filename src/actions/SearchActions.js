@@ -13,3 +13,15 @@ export const clearSearch = () => {
         dispatch({ type: "CLEAR_SEARCH" });
     };
 };
+
+export const searchUsersEvents = q => {
+    return dispatch => {
+        Search.userEventSearch(q).then(res => {
+            const newResponse = {
+                users: JSON.parse(res.users),
+                events: JSON.parse(res.events)
+            };
+            dispatch({ type: "SEARCH_USERS_EVENTS", payload: newResponse });
+        });
+    };
+};

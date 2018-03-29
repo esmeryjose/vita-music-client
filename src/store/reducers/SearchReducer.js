@@ -1,5 +1,9 @@
 const initialState = {
-    searchTracks: []
+    searchTracks: [],
+    usersAndEvents: {
+        users: [],
+        events: []
+    }
 };
 
 export default (state = initialState, action) => {
@@ -10,6 +14,8 @@ export default (state = initialState, action) => {
         case "CLEAR_SEARCH":
             return initialState;
 
+        case "SEARCH_USERS_EVENTS":
+            return { ...state, usersAndEvents: action.payload };
         default:
             return state;
     }

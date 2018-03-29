@@ -9,6 +9,7 @@ import TimePicker from "material-ui/TimePicker";
 import { TimeParser } from "../deliverables/Helpers";
 import { createEvent } from "../actions/EventsActions";
 import { IsEmpty } from "../deliverables/Helpers";
+import { NavLink } from "react-router-dom";
 
 const styles = {
     floatingLabelFocusStyle: {
@@ -97,7 +98,13 @@ class CreateEventModal extends Component {
                         <FlatButton
                             label="Create Event"
                             onClick={this.handleOpen}
-                        />
+                        />|
+                        <NavLink to="/search">
+                            <FlatButton
+                                label="Search"
+                                onClick={this.handleOpen}
+                            />
+                        </NavLink>
                     </div>
                 );
             }
@@ -136,7 +143,7 @@ class CreateEventModal extends Component {
                         data-type="title"
                         hintText=""
                         floatingLabelText="Title"
-                        onChange={this.handleChange.bind(this)}
+                        onChange={this.handleChange}
                         floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
                         underlineFocusStyle={styles.underlineFocusStyle}
                     />

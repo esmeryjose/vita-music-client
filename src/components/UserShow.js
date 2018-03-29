@@ -30,9 +30,13 @@ class UserShow extends Component {
 
         return (
             <div>
-                {!IsEmpty(user) ? <ProfileImage user={user} /> : null}
-                <CreateEventModal />
-                <UserEventsContainer />
+                <div>
+                    {!IsEmpty(user) ? <ProfileImage user={user} /> : null}
+                    <CreateEventModal />
+                </div>
+                <div>
+                    <UserEventsContainer />
+                </div>
             </div>
         );
     }
