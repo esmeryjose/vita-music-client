@@ -49,7 +49,4 @@ const mapStateToProps = ({ events }) => {
     return { playlist };
 };
 
-/*
-Make the onclick action which will send the song id the to api and add it to the playlist
-*/
 export default connect(mapStateToProps, { addTrackToPlaylist })(Track);

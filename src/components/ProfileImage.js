@@ -7,7 +7,7 @@ const ProfileImage = ({ user }) => {
         imgUrl = rockOn;
     }
     return (
-        <div className="profile-img-show-page center">
+        <div className="profile-img-show-page ">
             <img
                 className="profile-img"
                 src={imgUrl}

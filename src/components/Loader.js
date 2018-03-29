@@ -3,7 +3,7 @@ import spinner from "../assets/spinner.gif";
 
 const Loader = () => {
     return (
-        <div>
+        <div className="loader">
             <img src={spinner} alt="" />
         </div>
     );

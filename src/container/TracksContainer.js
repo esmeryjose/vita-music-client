@@ -12,33 +12,39 @@ const TracksContainer = ({ selectionTracks, pendingTracks }) => {
     return null;
 };
 
-const SelectionTracks = ({ selectionTracks }) => (
-    <div className="tracks-container">{selectionTracks.map(renderTrack)}</div>
-);
+const SelectionTracks = ({ selectionTracks }) => {
+    const renderTrack = (track, i) => <Track key={i} data={track} />;
 
-const AddedTracks = ({ pendingTracks }) => (
-    <div className="pending-tracks-margin">
-        <p>Added Tracks</p>
-        <div className="pending-tracks-container">
-            {pendingTracks.map((track, id) => {
-                return (
-                    <iframe
-                        key={id}
-                        className="track"
-                        src={`${trackSrc}${track.uri}&theme=white`}
-                        width="100%"
-                        height="80"
-                        frameBorder="0"
-                        allowtransparency="true"
-                        allow="encrypted-media"
-                    />
-                );
-            })}
+    return (
+        <div className="tracks-container">
+            {selectionTracks.map(renderTrack)}
         </div>
-    </div>
-);
+    );
+};
 
-const renderTrack = (track, i) => <Track key={i} data={track} />;
+const AddedTracks = ({ pendingTracks }) => {
+    const renderIframe = (track, id) => (
+        <iframe
+            key={id}
+            className="track"
+            src={`${trackSrc}${track.uri}&theme=white`}
+            width="100%"
+            height="80"
+            frameBorder="0"
+            allowtransparency="true"
+            allow="encrypted-media"
+        />
+    );
+
+    return (
+        <div className="pending-tracks-margin">
+            <p>Added Tracks</p>
+            <div className="pending-tracks-container">
+                {pendingTracks.map(renderIframe)}
+            </div>
+        </div>
+    );
+};
 
 const mapStateToProps = () => ({});
 

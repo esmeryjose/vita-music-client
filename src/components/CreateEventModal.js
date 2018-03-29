@@ -94,7 +94,7 @@ class CreateEventModal extends Component {
         if (currentUserId && !IsEmpty(user)) {
             if (currentUserId === user.id) {
                 return (
-                    <div className="create-event-button center">
+                    <div className="create-event-button">
                         <FlatButton
                             label="Create Event"
                             onClick={this.handleOpen}
