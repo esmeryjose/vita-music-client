@@ -9,6 +9,7 @@ import SpotifyPlayer from "react-spotify-player";
 import TracksContainer from "../container/TracksContainer";
 import { IsEmpty } from "../deliverables/Helpers";
 import _ from "underscore";
+import noEntry from "../assets/noEntry.png";
 
 const styles = {
     floatingLabelFocusStyle: {
@@ -86,6 +87,18 @@ class EventShow extends Component {
                         <div>
                             <TracksContainer
                                 pendingTracks={myPlaylist.pending_tracks}
+                            />
+                        </div>
+                    </div>
+                );
+            } else {
+                return (
+                    <div>
+                        <div className="no-entry-div">
+                            <img
+                                className="no-entry-img"
+                                src={noEntry}
+                                alt="no-entry"
                             />
                         </div>
                     </div>

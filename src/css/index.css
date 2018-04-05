@@ -302,3 +302,14 @@ body {
 .event-item{
     width: 80%;
 }
+
+.no-entry-div{
+    margin-top: 8% !important;
+    margin: 0 auto;
+    width: 25%;
+}
+
+.no-entry-img{
+    width: 100%;
+    height: 100%;
+}

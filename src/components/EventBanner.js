@@ -35,7 +35,7 @@ const renderRsvpButton = (event, currentUser, createRsvp) => {
             !event.pending.find(attendee => attendee.id === currentUser.id) &&
             event.user_id !== currentUser.id
         ) {
-            const numAttending = event.attendees.length;
+            const numAttending = event.pending.length;
             return (
                 <div className="container-rsvp-button">
                     <div className="center">
@@ -66,7 +66,6 @@ const Banner = ({ event, currentUser, createRsvp }) => {
     if (!imgUrl) {
         imgUrl = rockOn;
     }
-
     return (
         <div className="banner">
             <div className="host-container">

@@ -133,7 +133,7 @@ class CreateEventModal extends Component {
             <div>
                 {this.renderCreateButton()}
                 <Dialog
-                    title="Dialog With Actions"
+                    title="Create Event"
                     actions={this.renderButtonActions()}
                     modal={false}
                     open={this.state.open}
