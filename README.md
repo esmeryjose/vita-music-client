@@ -1,5 +1,3 @@
-This README would normally document whatever steps are necessary to get them application up and running.
-
 # Vita-Music client
 > Event gathering application that allows attendees to contribute to an event by adding songs to a common playlist.
 
