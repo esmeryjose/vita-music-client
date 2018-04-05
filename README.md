@@ -17,6 +17,8 @@ or
 yarn 
 ```
 
+This application relies on a rails api that can be  found [here](https://github.com/esmeryjose/vita-music-servers)
+
 ## Usage example
 
 Lets Assume for second its your birthday and you want to have your friends over. With my product you can create an event and have your friends rsvp and start adding songs to the playlist. To add a song a user must first search for it, in which case this application will respond with a collection of songs that match the search criteria. The user can now listen to the song and see if thats the one they were looking for.
@@ -27,4 +29,5 @@ Lets Assume for second its your birthday and you want to have your friends over.
 Esmery Corniel – [@esmery_corniel](https://twitter.com/esmery_corniel)(Twitter) – [@esmerycornielle](https://medium.com/@esmerycornielle)(Blogs)
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
+
 
