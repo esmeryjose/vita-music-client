@@ -23,3 +23,13 @@ export const deleteEvent = (userId, eventId) => {
         });
     };
 };
+export const openCreateEventModal = () => {
+    return dispatch => {
+        dispatch({ type: "OPEN_CREATE_EVENT_MODAL" });
+    };
+};
+export const closeCreateEventModal = () => {
+    return dispatch => {
+        dispatch({ type: "CLOSE_CREATE_EVENT_MODAL" });
+    };
+};

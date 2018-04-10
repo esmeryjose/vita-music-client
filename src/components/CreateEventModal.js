@@ -7,7 +7,11 @@ import TextField from "material-ui/TextField";
 import DatePicker from "material-ui/DatePicker";
 import TimePicker from "material-ui/TimePicker";
 import { TimeParser } from "../deliverables/Helpers";
-import { createEvent } from "../actions/EventsActions";
+import {
+    createEvent,
+    openCreateEventModal,
+    closeCreateEventModal
+} from "../actions/EventsActions";
 import { IsEmpty } from "../deliverables/Helpers";
 import { NavLink } from "react-router-dom";
 
@@ -22,7 +26,6 @@ const styles = {
 
 class CreateEventModal extends Component {
     state = {
-        open: false,
         form: {
             title: "",
             location: "",
@@ -33,15 +36,13 @@ class CreateEventModal extends Component {
         }
     };
 
-    handleOpen = () => {
-        this.setState({ open: true });
-    };
-
     handleClose = e => {
         if (!e || e.target.innerText === "CANCEL") {
-            this.setState({ open: false });
+            this.props.closeCreateEventModal();
         } else {
-            this.setState({ open: false }, this.createEvent);
+            // this.setState({ open: false }, this.createEvent);
+            this.props.closeCreateEventModal();
+            this.createEvent();
         }
     };
 
@@ -97,13 +98,10 @@ class CreateEventModal extends Component {
                     <div className="create-event-button">
                         <FlatButton
                             label="Create Event"
-                            onClick={this.handleOpen}
+                            onClick={this.props.openCreateEventModal}
                         />|
                         <NavLink to="/search">
-                            <FlatButton
-                                label="Search"
-                                onClick={this.handleOpen}
-                            />
+                            <FlatButton label="Search" />
                         </NavLink>
                     </div>
                 );
@@ -129,6 +127,8 @@ class CreateEventModal extends Component {
         return actions;
     };
     render() {
+        console.log("inside render", this.props.eventModal);
+
         return (
             <div>
                 {this.renderCreateButton()}
@@ -136,7 +136,7 @@ class CreateEventModal extends Component {
                     title="Create Event"
                     actions={this.renderButtonActions()}
                     modal={false}
-                    open={this.state.open}
+                    open={this.props.eventModal}
                     onRequestClose={this.handleClose}
                 >
                     <TextField
@@ -189,10 +189,15 @@ class CreateEventModal extends Component {
     }
 }
 
-const mapStateToProps = ({ auth, users }) => {
+const mapStateToProps = ({ auth, users, events }) => {
     const id = auth.currentUser.id;
     const { user } = users;
-    return { currentUserId: id, user };
+    const eventModal = events.createEventModal;
+    return { currentUserId: id, user, eventModal };
 };
 
-export default connect(mapStateToProps, { createEvent })(CreateEventModal);
+export default connect(mapStateToProps, {
+    createEvent,
+    openCreateEventModal,
+    closeCreateEventModal
+})(CreateEventModal);

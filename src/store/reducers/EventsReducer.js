@@ -1,4 +1,5 @@
 const initialState = {
+    createEventModal: false,
     event: {}
 };
 
@@ -19,6 +20,10 @@ export default (state = initialState, action) => {
                     pending: newPending
                 }
             };
+        case "OPEN_CREATE_EVENT_MODAL":
+            return { ...state, createEventModal: true };
+        case "CLOSE_CREATE_EVENT_MODAL":
+            return { ...state, createEventModal: false };
         default:
             return state;
     }
