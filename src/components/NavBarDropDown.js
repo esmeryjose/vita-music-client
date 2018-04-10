@@ -45,6 +45,7 @@ const NavBarDropDown = ({ logOutUser, history, currentuser }) => {
                 <span className="home-avatar">Home</span>
             </MenuItem>
             <MenuItem primaryText="Search" onClick={search} />
+            <MenuItem primaryText="Create Event" onClick={search} />
             <MenuItem primaryText="Sign out" onClick={logOut} />
         </IconMenu>
     );
