@@ -13,6 +13,7 @@ import { clearSearch } from "../actions/SearchActions";
 import { clearPlaylist } from "../actions/PlaylistActions";
 import { clearUser } from "../actions/UserActions";
 import Search from "../components/Search";
+import CreateEventModal from "../components/CreateEventModal";
 
 class App extends Component {
     componentDidMount() {
@@ -36,6 +37,7 @@ class App extends Component {
     render() {
         return (
             <div>
+                <CreateEventModal />
                 {this.props.isLoggedIn ? <NavBar /> : null}
                 {this.props.loading ? <Loader /> : null}
                 <Route exact path="/callback" component={Callback} />

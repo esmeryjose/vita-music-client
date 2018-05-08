@@ -4,7 +4,6 @@ import { getUser } from "../actions/UserActions";
 import { getUserEvents } from "../actions/UserActions";
 import UserEventsContainer from "../container/UserEventsContainer";
 import { IsEmpty } from "../deliverables/Helpers";
-import CreateEventModal from "./CreateEventModal";
 import ProfileImage from "./ProfileImage";
 
 class UserShow extends Component {
@@ -33,7 +32,6 @@ class UserShow extends Component {
                 <div className="user-show-flex">
                     <div className="profile-item">
                         {!IsEmpty(user) ? <ProfileImage user={user} /> : null}
-                        <CreateEventModal />
                     </div>
                     <div className="event-item">
                         <UserEventsContainer />

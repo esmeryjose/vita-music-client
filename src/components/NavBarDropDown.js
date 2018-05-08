@@ -9,8 +9,14 @@ import { logOutUser } from "../actions/AuthActions";
 import Avatar from "material-ui/Avatar";
 import Chip from "material-ui/Chip";
 import rockOn from "../assets/rockOn.jpg";
+import { openCreateEventModal } from "../actions/EventsActions";
 
-const NavBarDropDown = ({ logOutUser, history, currentuser }) => {
+const NavBarDropDown = ({
+    logOutUser,
+    history,
+    currentuser,
+    openCreateEventModal
+}) => {
     const logOut = () => {
         logOutUser(history);
     };
@@ -45,7 +51,10 @@ const NavBarDropDown = ({ logOutUser, history, currentuser }) => {
                 <span className="home-avatar">Home</span>
             </MenuItem>
             <MenuItem primaryText="Search" onClick={search} />
-            <MenuItem primaryText="Create Event" onClick={search} />
+            <MenuItem
+                primaryText="Create Event"
+                onClick={openCreateEventModal}
+            />
             <MenuItem primaryText="Sign out" onClick={logOut} />
         </IconMenu>
     );
@@ -58,5 +67,8 @@ const mapStateToProps = ({ auth }) => ({
 });
 
 export default withRouter(
-    connect(mapStateToProps, { logOutUser })(NavBarDropDown)
+    connect(mapStateToProps, {
+        logOutUser,
+        openCreateEventModal
+    })(NavBarDropDown)
 );
