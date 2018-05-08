@@ -32,6 +32,9 @@ class App extends Component {
             this.props.clearPlaylist();
             this.props.clearUser();
         }
+        if (this.props.location.pathname === "/" && nextProps.isLoggedIn) {
+            this.props.history.push(`/users/${nextProps.currentUser.id}`);
+        }
     }
 
     render() {
