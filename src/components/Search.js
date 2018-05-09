@@ -54,10 +54,6 @@ class Search extends Component {
     }
 }
 
-const mapStateToProps = state => {
-    console.log(state.search.usersAndEvents);
-
-    return {};
-};
+const mapStateToProps = state => ({});
 
 export default connect(mapStateToProps, { searchUsersEvents })(Search);
