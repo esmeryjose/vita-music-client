@@ -44,7 +44,7 @@ class UserShow extends Component {
 
 const mapStateToProps = ({ auth, users, userEvents }) => {
     const { isLoggedIn, currentUser } = auth;
-    const { user, events } = users;
+    const { user } = users;
     return { isLoggedIn, currentUser, user };
 };
 
