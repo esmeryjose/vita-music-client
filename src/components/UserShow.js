@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getUser } from "../actions/UserActions";
+import FlatButton from "material-ui/FlatButton";
+import { NavLink } from "react-router-dom";
 import { getUserEvents } from "../actions/UserActions";
 import UserEventsContainer from "../container/UserEventsContainer";
 import { IsEmpty } from "../deliverables/Helpers";
@@ -24,6 +26,26 @@ class UserShow extends Component {
         }
     }
 
+    renderCreateButton = () => {
+        const { currentUserId, user } = this.props;
+        if (currentUserId && !IsEmpty(user)) {
+            if (currentUserId === user.id) {
+                return (
+                    <div className="create-event-button">
+                        <FlatButton
+                            label="Create Event"
+                            onClick={this.props.openCreateEventModal}
+                        />|
+                        <NavLink to="/search">
+                            <FlatButton label="Search" />
+                        </NavLink>
+                    </div>
+                );
+            }
+        }
+        return null;
+    };
+
     render() {
         const { user } = this.props;
 
@@ -32,6 +54,7 @@ class UserShow extends Component {
                 <div className="user-show-flex">
                     <div className="profile-item">
                         {!IsEmpty(user) ? <ProfileImage user={user} /> : null}
+                        {this.renderCreateButton()}
                     </div>
                     <div className="event-item">
                         <UserEventsContainer />
@@ -45,7 +68,7 @@ class UserShow extends Component {
 const mapStateToProps = ({ auth, users, userEvents }) => {
     const { isLoggedIn, currentUser } = auth;
     const { user, events } = users;
-    return { isLoggedIn, currentUser, user };
+    return { isLoggedIn, currentUser, user, currentUserId: currentUser.id };
 };
 
 export default connect(mapStateToProps, { getUser, getUserEvents })(UserShow);
