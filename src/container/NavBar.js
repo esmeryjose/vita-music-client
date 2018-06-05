@@ -5,6 +5,7 @@ import ActionHome from "material-ui/svg-icons/action/home";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import NavBarDropDown from "../components/NavBarDropDown";
+import Notification from "../components/Notification";
 import logo from "../assets/logoVitaMusic.png";
 
 const iconStyles = {
@@ -38,7 +39,12 @@ class NavBar extends Component {
                             />
                         </IconButton>
                     }
-                    iconElementRight={<NavBarDropDown />}
+                    iconElementRight={
+                        <div>
+                            <Notification />
+                            <NavBarDropDown />
+                        </div>
+                    }
                 />
             </div>
         );

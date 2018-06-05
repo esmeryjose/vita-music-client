@@ -90,26 +90,6 @@ class CreateEventModal extends Component {
         }));
     };
 
-    renderCreateButton = () => {
-        const { currentUserId, user } = this.props;
-        if (currentUserId && !IsEmpty(user)) {
-            if (currentUserId === user.id) {
-                return (
-                    <div className="create-event-button">
-                        <FlatButton
-                            label="Create Event"
-                            onClick={this.props.openCreateEventModal}
-                        />|
-                        <NavLink to="/search">
-                            <FlatButton label="Search" />
-                        </NavLink>
-                    </div>
-                );
-            }
-        }
-        return null;
-    };
-
     renderButtonActions = () => {
         const actions = [
             <FlatButton
@@ -131,7 +111,6 @@ class CreateEventModal extends Component {
 
         return (
             <div>
-                {this.renderCreateButton()}
                 <Dialog
                     title="Create Event"
                     actions={this.renderButtonActions()}
