@@ -4,6 +4,7 @@ import { getUser } from "../actions/UserActions";
 import FlatButton from "material-ui/FlatButton";
 import { NavLink } from "react-router-dom";
 import { getUserEvents } from "../actions/UserActions";
+import { openCreateEventModal } from "../actions/EventsActions";
 import UserEventsContainer from "../container/UserEventsContainer";
 import { IsEmpty } from "../deliverables/Helpers";
 import ProfileImage from "./ProfileImage";
@@ -71,4 +72,8 @@ const mapStateToProps = ({ auth, users, userEvents }) => {
     return { isLoggedIn, currentUser, user, currentUserId: currentUser.id };
 };
 
-export default connect(mapStateToProps, { getUser, getUserEvents })(UserShow);
+export default connect(mapStateToProps, {
+    getUser,
+    getUserEvents,
+    openCreateEventModal
+})(UserShow);
