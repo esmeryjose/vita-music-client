@@ -59,11 +59,14 @@ const mapStateToProps = state => ({
 });
 
 export default withRouter(
-    connect(mapStateToProps, {
-        getCurrentUser,
-        startLoader,
-        clearSearch,
-        clearPlaylist,
-        clearUser
-    })(App)
+    connect(
+        mapStateToProps,
+        {
+            getCurrentUser,
+            startLoader,
+            clearSearch,
+            clearPlaylist,
+            clearUser
+        }
+    )(App)
 );
