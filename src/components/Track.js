@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import UserEvent from "../components/UserEvent";
 import FloatingActionButton from "material-ui/FloatingActionButton";
 import ContentAdd from "material-ui/svg-icons/content/add";
 import { addTrackToPlaylist } from "../actions/TrackActions";
@@ -19,6 +18,7 @@ const Track = ({ data, playlist, addTrackToPlaylist }) => {
     return (
         <div className="whole-track">
             <iframe
+                title={data.uri}
                 className="track"
                 src={`${trackSrc}${data.uri}&theme=white`}
                 width="30%"
@@ -49,4 +49,7 @@ const mapStateToProps = ({ events }) => {
     return { playlist };
 };
 
-export default connect(mapStateToProps, { addTrackToPlaylist })(Track);
+export default connect(
+    mapStateToProps,
+    { addTrackToPlaylist }
+)(Track);

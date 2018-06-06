@@ -1,7 +1,6 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import UserShow from "../components/UserShow";
-import UserEventsContainer from "./UserEventsContainer";
 import EventShow from "../components/EventShow";
 
 const UsersRouteContainer = () => {

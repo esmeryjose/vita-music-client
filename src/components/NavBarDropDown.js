@@ -7,7 +7,6 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { logOutUser } from "../actions/AuthActions";
 import Avatar from "material-ui/Avatar";
-import Chip from "material-ui/Chip";
 import rockOn from "../assets/rockOn.jpg";
 import { openCreateEventModal } from "../actions/EventsActions";
 
@@ -67,8 +66,11 @@ const mapStateToProps = ({ auth }) => ({
 });
 
 export default withRouter(
-    connect(mapStateToProps, {
-        logOutUser,
-        openCreateEventModal
-    })(NavBarDropDown)
+    connect(
+        mapStateToProps,
+        {
+            logOutUser,
+            openCreateEventModal
+        }
+    )(NavBarDropDown)
 );

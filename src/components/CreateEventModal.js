@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Dialog from "material-ui/Dialog";
 import FlatButton from "material-ui/FlatButton";
-import RaisedButton from "material-ui/RaisedButton";
 import TextField from "material-ui/TextField";
 import DatePicker from "material-ui/DatePicker";
 import TimePicker from "material-ui/TimePicker";
@@ -12,8 +11,6 @@ import {
     openCreateEventModal,
     closeCreateEventModal
 } from "../actions/EventsActions";
-import { IsEmpty } from "../deliverables/Helpers";
-import { NavLink } from "react-router-dom";
 
 const styles = {
     floatingLabelFocusStyle: {
@@ -175,8 +172,11 @@ const mapStateToProps = ({ auth, users, events }) => {
     return { currentUserId: id, user, eventModal };
 };
 
-export default connect(mapStateToProps, {
-    createEvent,
-    openCreateEventModal,
-    closeCreateEventModal
-})(CreateEventModal);
+export default connect(
+    mapStateToProps,
+    {
+        createEvent,
+        openCreateEventModal,
+        closeCreateEventModal
+    }
+)(CreateEventModal);

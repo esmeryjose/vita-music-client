@@ -5,7 +5,6 @@ import { searchTracks } from "../actions/SearchActions";
 import { getPlaylist } from "../actions/PlaylistActions";
 import EventBanner from "../components/EventBanner";
 import TextField from "material-ui/TextField";
-import SpotifyPlayer from "react-spotify-player";
 import TracksContainer from "../container/TracksContainer";
 import { IsEmpty } from "../deliverables/Helpers";
 import _ from "underscore";
@@ -30,7 +29,6 @@ class EventShow extends Component {
 
     handleChange = e => {
         const { value } = e.target;
-        const { searchTracks } = this.props;
         this.setState(
             { searchSong: value },
             _.debounce(this.getSearchTrack, 300)
@@ -128,8 +126,11 @@ const mapStateToProps = ({ auth, search, events, playlist }) => {
     return { selectionTracks: searchTracks, myPlaylist, event, currentUser };
 };
 
-export default connect(mapStateToProps, {
-    getEvent,
-    searchTracks,
-    getPlaylist
-})(EventShow);
+export default connect(
+    mapStateToProps,
+    {
+        getEvent,
+        searchTracks,
+        getPlaylist
+    }
+)(EventShow);

@@ -68,12 +68,15 @@ class UserShow extends Component {
 
 const mapStateToProps = ({ auth, users, userEvents }) => {
     const { isLoggedIn, currentUser } = auth;
-    const { user, events } = users;
+    const { user } = users;
     return { isLoggedIn, currentUser, user, currentUserId: currentUser.id };
 };
 
-export default connect(mapStateToProps, {
-    getUser,
-    getUserEvents,
-    openCreateEventModal
-})(UserShow);
+export default connect(
+    mapStateToProps,
+    {
+        getUser,
+        getUserEvents,
+        openCreateEventModal
+    }
+)(UserShow);

@@ -1,5 +1,4 @@
 import React from "react";
-import EventDetail from "../components/EventDetail";
 import Avatar from "material-ui/Avatar";
 import { connect } from "react-redux";
 import RaisedButton from "material-ui/RaisedButton";
@@ -119,4 +118,7 @@ const mapStateToProps = ({ events, auth }) => {
     return { event, currentUser };
 };
 
-export default connect(mapStateToProps, { createRsvp })(EventBanner);
+export default connect(
+    mapStateToProps,
+    { createRsvp }
+)(EventBanner);

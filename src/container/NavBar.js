@@ -1,16 +1,11 @@
 import React, { Component } from "react";
 import AppBar from "material-ui/AppBar";
 import IconButton from "material-ui/IconButton";
-import ActionHome from "material-ui/svg-icons/action/home";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import NavBarDropDown from "../components/NavBarDropDown";
 import Notification from "../components/Notification";
 import logo from "../assets/logoVitaMusic.png";
-
-const iconStyles = {
-    marginRight: 24
-};
 
 class NavBar extends Component {
     state = {
@@ -56,4 +51,9 @@ const mapStateToProps = state => ({
     currentUser: state.auth.currentUser
 });
 
-export default withRouter(connect(mapStateToProps, {})(NavBar));
+export default withRouter(
+    connect(
+        mapStateToProps,
+        {}
+    )(NavBar)
+);

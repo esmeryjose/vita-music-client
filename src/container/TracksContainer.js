@@ -25,6 +25,7 @@ const SelectionTracks = ({ selectionTracks }) => {
 const AddedTracks = ({ pendingTracks }) => {
     const renderIframe = (track, id) => (
         <iframe
+            title={id}
             key={id}
             className="track"
             src={`${trackSrc}${track.uri}&theme=white`}
@@ -45,7 +46,5 @@ const AddedTracks = ({ pendingTracks }) => {
         </div>
     );
 };
-
-const mapStateToProps = () => ({});
 
 export default TracksContainer;

@@ -1,11 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { Card, CardActions, CardHeader, CardText } from "material-ui/Card";
-import FlatButton from "material-ui/FlatButton";
+import { Card, CardHeader, CardText } from "material-ui/Card";
 import FloatingActionButton from "material-ui/FloatingActionButton";
 import Delete from "material-ui/svg-icons/action/delete-forever";
-import lightGreen500 from "material-ui/styles/colors";
 import { deleteEvent } from "../actions/EventsActions";
 import { IsEmpty } from "../deliverables/Helpers";
 const style = {
@@ -58,4 +56,7 @@ const mapStateToProps = ({ auth, users }) => {
     return { currentUser, user };
 };
 
-export default connect(mapStateToProps, { deleteEvent })(UserEvent);
+export default connect(
+    mapStateToProps,
+    { deleteEvent }
+)(UserEvent);
